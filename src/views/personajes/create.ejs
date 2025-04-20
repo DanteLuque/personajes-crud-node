@@ -1,4 +1,6 @@
 <%- include('../partials/header') %>
+<section class="container mt-5">
+    <h2>Crear Personaje</h2>
     <form action="/personajes/create" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label>Nombre</label>
@@ -40,5 +42,6 @@
         <button type="submit" class="btn btn-primary">Guardar</button>
         <a href="/personajes" class="btn btn-secondary">Cancelar</a>
     </form>
+</section>
 
     <%- include('../partials/footer') %>

@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-    <main class="container mt-5">
+    <main class="container my-5">
         <div class="card">
             <div class="card-header">
                 <h2>
@@ -10,16 +10,16 @@
             <div class="card-body">
                 <% if (personaje.IMAGE_URL) { %>
                     <img src="<%= personaje.IMAGE_URL %>" alt="Imagen de <%= personaje.NOMBRE %>"
-                        class="img-fluid mb-3 rounded">
+                    class="rounded mx-auto d-block mb-3" style="height: 40em; object-fit: cover;">
                 <% } else { %>
                     <img src="/images/image-not-found.jpg" alt="Imagen no encontrada"
-                    class="img-fluid mb-3 rounded">
+                    class="rounded mx-auto d-block mb-3" style="height: 40em; object-fit: cover;">
                 <% }%>
                             <p><strong>Especie:</strong>
                                 <%= personaje.ESPECIE %>
                             </p>
                             <p><strong>Género:</strong>
-                                <%= personaje.GENERO %>
+                                <%= formatGender(personaje.GENERO) %>
                             </p>
                             <p><strong>Edad:</strong>
                                 <%= personaje.EDAD %>
