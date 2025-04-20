@@ -11,8 +11,10 @@
                 <% if (personaje.IMAGE_URL) { %>
                     <img src="<%= personaje.IMAGE_URL %>" alt="Imagen de <%= personaje.NOMBRE %>"
                         class="img-fluid mb-3 rounded">
-                    <% } else { %>
-                    <% }%>
+                <% } else { %>
+                    <img src="/images/image-not-found.jpg" alt="Imagen no encontrada"
+                    class="img-fluid mb-3 rounded">
+                <% }%>
                             <p><strong>Especie:</strong>
                                 <%= personaje.ESPECIE %>
                             </p>

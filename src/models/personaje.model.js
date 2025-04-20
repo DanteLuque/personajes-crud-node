@@ -51,6 +51,38 @@ class Personaje {
       );
     });
   }
+
+  create(conexion) {
+    return new Promise((resolve, reject) => {
+      const now = new Date();
+      this.created_at = now;
+      this.updated_at = now;
+
+      conexion.query(
+        `INSERT INTO PERSONAJES (NOMBRE, ESPECIE, GENERO, EDAD, DESCRIPCION, HABILIDADES, TERRITORIO, IMAGE_URL, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          this.nombre,
+          this.especie,
+          this.genero,
+          this.edad,
+          this.descripcion,
+          this.habilidades,
+          this.territorio,
+          this.image_url,
+          this.created_at,
+          this.updated_at,
+        ],
+        (error, result) => {
+          if (error) return reject(error);
+          this.id = result.insertId;
+          return resolve(result);
+        }
+      );
+    });
+  }
+
 }
+
 
 export default Personaje;

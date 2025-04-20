@@ -26,3 +26,32 @@ export const viewPersonaje = async (req, res) => {
     res.status(500).send('Error al cargar los detalles del personaje');
   }
 };
+
+export const showCreateForm = (req, res) => {
+  res.render('personajes/create');
+};
+
+export const savePersonaje = async (req, res) => {
+  try {
+    const { nombre, especie, genero, edad, descripcion, habilidades, territorio } = req.body;
+    const image_url = req.file ? `/images/${req.file.filename}` : null;
+
+    const personaje = new Personaje(
+      null,
+      nombre,
+      especie,
+      genero,
+      parseInt(edad),
+      descripcion,
+      habilidades,
+      territorio,
+      image_url
+    );
+
+    await personaje.create(conexion);
+    res.redirect('/personajes');
+  } catch (error) {
+    console.error('Error al guardar personaje:', error);
+    res.status(500).send('Error al guardar el personaje');
+  }
+};

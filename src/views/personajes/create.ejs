@@ -1,0 +1,41 @@
+<%- include('../partials/header') %>
+    <form action="/personajes/create" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input type="text" name="nombre" class="form-control" required />
+        </div>
+        <div class="mb-3">
+            <label>Especie</label>
+            <input type="text" name="especie" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Género</label>
+            <select name="genero" class="form-control">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Edad</label>
+            <input type="number" name="edad" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Descripción</label>
+            <textarea name="descripcion" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <label>Habilidades</label>
+            <textarea name="habilidades" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+            <label>Territorio</label>
+            <input type="text" name="territorio" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Imagen</label>
+            <input type="file" name="image" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+
+    <%- include('../partials/footer') %>
