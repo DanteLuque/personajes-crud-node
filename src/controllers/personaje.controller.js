@@ -105,3 +105,14 @@ export const updatePersonaje = async (req, res) => {
     res.status(500).send("Error al actualizar personaje");
   }
 };
+
+export const deletePersonaje = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Personaje.delete(conexion, id);
+    res.redirect('/personajes');
+  } catch (error) {
+    console.error('Error al eliminar personaje:', error);
+    res.status(500).send('Error al eliminar el personaje');
+  }
+};

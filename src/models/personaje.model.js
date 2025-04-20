@@ -52,6 +52,33 @@ class Personaje {
     });
   }
 
+  static delete(conexion, id) {
+    return new Promise((resolve, reject) => {
+      const now = new Date();
+      conexion.query(
+        "UPDATE PERSONAJES SET deleted_at = ? WHERE ID = ? AND deleted_at IS NULL",
+        [now, id],
+        (error, result) => {
+          if (error) return reject(error);
+          return resolve(result);
+        }
+      );
+    });
+  }
+
+  static hardDelete(conexion, id) {
+    return new Promise((resolve, reject) => {
+      conexion.query(
+        "DELETE FROM PERSONAJES WHERE ID = ?",
+        [id],
+        (error, result) => {
+          if (error) return reject(error);
+          return resolve(result);
+        }
+      );
+    });
+  }
+
   create(conexion) {
     return new Promise((resolve, reject) => {
       const now = new Date();
