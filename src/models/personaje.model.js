@@ -82,6 +82,33 @@ class Personaje {
     });
   }
 
+  update(conexion) {
+    return new Promise((resolve, reject) => {
+      this.updated_at = new Date();
+
+      conexion.query(
+        `UPDATE PERSONAJES SET NOMBRE = ?, ESPECIE = ?, GENERO = ?, EDAD = ?, DESCRIPCION = ?, HABILIDADES = ?, TERRITORIO = ?, IMAGE_URL = ?, updated_at = ?
+        WHERE ID = ? AND deleted_at IS NULL`,
+        [
+          this.nombre,
+          this.especie,
+          this.genero,
+          this.edad,
+          this.descripcion,
+          this.habilidades,
+          this.territorio,
+          this.image_url,
+          this.updated_at,
+          this.id
+        ],
+        (error, result) => {
+          if (error) return reject(error);
+          return resolve(result);
+        }
+      );
+    });
+  }
+
 }
 
 

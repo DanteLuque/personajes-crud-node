@@ -1,0 +1,54 @@
+<%- include('../partials/header') %>
+
+    <section class="container mt-5">
+        <h2>Editar Personaje</h2>
+        <form action="/personajes/edit/<%= personaje.ID %>" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" value="<%= personaje.NOMBRE %>" required>
+            </div>
+            <div class="mb-3">
+                <label for="especie" class="form-label">Especie</label>
+                <input type="text" class="form-control" name="especie" value="<%= personaje.ESPECIE %>">
+            </div>
+            <div class="mb-3">
+                <label for="genero" class="form-label">Género</label>
+                <select class="form-control" name="genero">
+                    <option value="M" <%=personaje.GENERO==='M' ? 'selected' : '' %>>Masculino</option>
+                    <option value="F" <%=personaje.GENERO==='F' ? 'selected' : '' %>>Femenino</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" name="edad" value="<%= personaje.EDAD %>">
+            </div>
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción</label>
+                <textarea class="form-control" name="descripcion"><%= personaje.DESCRIPCION %></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="habilidades" class="form-label">Habilidades</label>
+                <textarea class="form-control" name="habilidades"><%= personaje.HABILIDADES %></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="territorio" class="form-label">Territorio</label>
+                <input type="text" class="form-control" name="territorio" value="<%= personaje.TERRITORIO %>">
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Imagen</label>
+                <% if (personaje.IMAGE_URL) { %>
+                    <img id="preview" src="<%= personaje.IMAGE_URL %>" alt="Imagen actual" class="img-thumbnail mb-2"
+                        width="150">
+                <% } else { %>
+                    <img id="preview" src="#" alt="Vista previa" class="img-thumbnail mb-2" width="150"
+                        style="display: none;">
+                <% } %>
+                    <input type="hidden" name="current_image_url" value="<%= personaje.IMAGE_URL %>">
+                    <input type="file" class="form-control" name="image" id="imageInput">
+            </div>
+            <button type="submit" class="btn btn-success">Actualizar</button>
+            <a href="/personajes" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </section>
+
+    <%- include('../partials/footer') %>
