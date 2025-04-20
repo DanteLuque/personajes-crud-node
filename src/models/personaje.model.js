@@ -136,6 +136,20 @@ class Personaje {
     });
   }
 
+  static search(conexion, searchTerm) {
+    return new Promise((resolve, reject) => {
+      const term = `%${searchTerm}%`;
+      conexion.query(
+        "SELECT * FROM PERSONAJES WHERE (NOMBRE LIKE ? OR ESPECIE LIKE ? OR TERRITORIO LIKE ?) AND deleted_at IS NULL",
+        [term, term, term],
+        (error, result) => {
+          if (error) return reject(error);
+          return resolve(result);
+        }
+      );
+    });
+  }
+
 }
 
 

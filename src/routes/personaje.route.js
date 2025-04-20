@@ -9,6 +9,7 @@ import {
   updatePersonaje,
   viewPersonaje,
   deletePersonaje,
+  searchPersonajes,
 } from '../controllers/personaje.controller.js';
 
 const personajeRouter = express.Router();
@@ -19,5 +20,6 @@ personajeRouter.get('/personajes/edit/:id', showEditForm);
 personajeRouter.post('/personajes/edit/:id', upload.single('image'), updatePersonaje);
 personajeRouter.get('/personajes/delete/:id', deletePersonaje);
 personajeRouter.get('/personajes/view/:id', viewPersonaje);
+personajeRouter.get('/personajes/search', searchPersonajes);
 
 export default personajeRouter;

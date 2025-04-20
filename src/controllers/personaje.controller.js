@@ -4,7 +4,7 @@ import Personaje from '../models/personaje.model.js';
 export const getAllPersonajes = async (req, res) => {
   try {
     const personajes = await Personaje.getAll(conexion);
-    res.render('personajes/index', { personajes });
+    res.render('personajes/index', { personajes, searchTerm: ''});
   } catch (error) {
     console.error('Error al obtener personajes:', error);
     res.status(500).send('Error al cargar los personajes');
@@ -114,5 +114,16 @@ export const deletePersonaje = async (req, res) => {
   } catch (error) {
     console.error('Error al eliminar personaje:', error);
     res.status(500).send('Error al eliminar el personaje');
+  }
+};
+
+export const searchPersonajes = async (req, res) => {
+  try {
+    const searchTerm = req.query.q;
+    const personajes = await Personaje.search(conexion, searchTerm);
+    res.render('personajes/index', { personajes, searchTerm });
+  } catch (error) {
+    console.error('Error al buscar personajes:', error);
+    res.status(500).send('Error al buscar personajes');
   }
 };
