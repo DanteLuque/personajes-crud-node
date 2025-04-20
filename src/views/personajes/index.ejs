@@ -1,0 +1,43 @@
+<%- include('../partials/header') %>
+
+  <main class="flex-fill">
+    <section class="container mt-3">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Lista de Personajes</h3>
+        <a href="/personajes/create" class="btn btn-sm btn-primary">Registrar</a>
+      </div>
+      <div class="card-body">
+        <table class="table table-sm table-striped">
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Nombre</th>
+              <th>Especie</th>
+              <th>Género</th>
+              <th>Edad</th>
+              <th>Territorio</th>
+              <th>Operaciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% personajes.forEach((personaje, index)=> { %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= personaje.NOMBRE %></td>
+                <td><%= personaje.ESPECIE %></td>
+                <td><%= personaje.GENERO %></td>
+                <td><%= personaje.EDAD %></td>
+                <td><%= personaje.TERRITORIO %></td>
+                <td>
+                  <a href="/personajes/edit/<%= personaje.ID %>" class="btn btn-sm btn-info">Editar</a>
+                  <a href="/personajes/delete/<%= personaje.ID %>" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+              </tr>
+              <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <%- include('../partials/footer') %>
