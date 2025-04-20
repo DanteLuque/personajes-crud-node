@@ -31,7 +31,7 @@
                 <td>
                   <a href="/personajes/view/<%= personaje.ID %>" class="btn btn-sm btn-success">Ver más</a>
                   <a href="/personajes/edit/<%= personaje.ID %>" class="btn btn-sm btn-info">Editar</a>
-                  <a href="/personajes/delete/<%= personaje.ID %>" class="btn btn-sm btn-danger">Eliminar</a>
+                  <a href="/personajes/delete/<%= personaje.ID %>" class="btn btn-sm btn-danger" onclick=" return consult('eliminar')">Eliminar</a>
                 </td>
               </tr>
               <% }) %>
