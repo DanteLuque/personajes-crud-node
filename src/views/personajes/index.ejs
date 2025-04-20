@@ -2,15 +2,21 @@
 
   <main class="flex-fill">
     <section class="container mt-3">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <h3>Lista de Personajes</h3>
-        <a href="/personajes/create" class="btn btn-sm btn-primary">Registrar</a>
+      <div class="card-header row g-2 align-items-center">
+        <div class="col-md-4">
+          <h3 class="mb-0">Lista de Personajes</h3>
+        </div>
+        <div class="col-md-6">
+          <form class="d-flex" method="GET" action="/personajes/search">
+            <input type="text" name="q" class="form-control me-2" placeholder="Buscar personaje por nombre, especie o territorio..." value="<%= searchTerm || '' %>" />
+            <button type="submit" class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+        </div>
+        <div class="col-md-2 text-end">
+          <a href="/personajes/create" class="btn btn-sm btn-primary">Registrar</a>
+        </div>
       </div>
       <div class="card-body">
-        <form class="mb-3 d-flex" method="GET" action="/personajes/search">
-          <input type="text" name="q" class="form-control me-2" placeholder="Buscar personaje por nombre, especie o territorio..." value="<%= searchTerm || '' %>" />
-          <button type="submit" class="btn btn-outline-primary">Buscar</button>
-        </form>
         <table class="table table-sm table-striped">
           <thead>
             <tr>
@@ -33,9 +39,9 @@
                 <td><%= personaje.EDAD %></td>
                 <td><%= personaje.TERRITORIO %></td>
                 <td>
-                  <a href="/personajes/view/<%= personaje.ID %>" class="btn btn-sm btn-success">Ver más</a>
-                  <a href="/personajes/edit/<%= personaje.ID %>" class="btn btn-sm btn-info">Editar</a>
-                  <a href="/personajes/delete/<%= personaje.ID %>" class="btn btn-sm btn-danger" onclick=" return consult('eliminar')">Eliminar</a>
+                  <a href="/personajes/view/<%= personaje.ID %>" class="btn btn-sm btn-success"><i class="fa-solid fa-circle-info"></i></a>
+                  <a href="/personajes/edit/<%= personaje.ID %>" class="btn btn-sm btn-info"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a href="/personajes/delete/<%= personaje.ID %>" class="btn btn-sm btn-danger" onclick=" return consult('eliminar')"><i class="fa-solid fa-trash"></i></a>
                 </td>
               </tr>
               <% }) %>
