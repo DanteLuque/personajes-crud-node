@@ -122,7 +122,7 @@ export const searchPersonajes = async (req, res) => {
   try {
     const searchTerm = req.query.q;
     const personajes = await Personaje.search(conexion, searchTerm);
-    res.render('personajes/index', { personajes, searchTerm });
+    res.render('personajes/index', { personajes, searchTerm, formatGender });
   } catch (error) {
     console.error('Error al buscar personajes:', error);
     res.status(500).send('Error al buscar personajes');
